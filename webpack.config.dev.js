@@ -16,5 +16,16 @@ module.exports = {
       filename: 'index.html', //打包后的文件名
       template: 'src/index.html'  //文件模板
     })
-  ]
+  ],
+  module: { //预编译设置
+    rules: [
+      {
+        test: /\.vue$/, //文件匹配规则，这里举例匹配vue文件
+        loader: '',  //使用什么loader处理匹配到的文件,比如vue-loader
+        options: {  //配置loader
+          
+        }
+      }
+    ]
+  }
 }
