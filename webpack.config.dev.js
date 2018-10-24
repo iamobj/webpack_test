@@ -37,6 +37,11 @@ module.exports = {
         options: {
           limit: 10000, //以b为单位，1024b=1kb，超过这个值就会交给file-loader打包处理，小于则使用base64转码
         }
+      },
+      //字体也是用url-loader/file-loader处理
+      {
+        test: /\.(woff2|woff|ttf|eot|svg)$/,
+        loader: 'url-loader',
       }
     ]
   },
