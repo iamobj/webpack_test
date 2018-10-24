@@ -29,7 +29,32 @@ module.exports = {
       {
         test: /\.css$/,
         //先启用css-loader处理css内容，在交给style-loader处理添加到结构文档中(index.html)
-        loader: ['style-loader','css-loader']
+        // loader: ['style-loader','css-loader']  // 如果默认配置 可以这样写 需要单独配置 则下面写法
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              //这里设置css-loader的配置
+              module: false,  //是否开启模块化，默认false，开启后 类名会改变
+              // localIdentName: '[path]-[name]-[local]-[hash:base64:6]'  //设置编译后的名字 变量path所在文件夹,name文件名，local代码里编译前写的名字   这个值默认是hash:base64(一串哈希值) 后面跟个冒号6 是生产6个字符的哈希值
+            }
+          }
+        ],
+        // include: [  // 包含，只处理这里面的
+        //   path.resolve(__dirname, 'src')
+        // ],
+        // exclude: [  //排除，不处理这里面的
+        //   path.resolve(__dirname, 'node_modules')
+        // ]
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader'
+        ]
       },
       {
         test: /\.(jpg|png|gif)$/,
