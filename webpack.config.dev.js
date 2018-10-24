@@ -17,17 +17,22 @@ module.exports = {
       template: 'src/index.html'  //文件模板
     })
   ],
-  // module: { //预编译设置
-  //   rules: [
-  //     {
-  //       test: /\.vue$/, //文件匹配规则，这里举例匹配vue文件
-  //       loader: '',  //使用什么loader处理匹配到的文件,比如vue-loader
-  //       options: {  //配置loader
+  module: { //预编译设置
+    rules: [
+      // {
+      //   test: /\.vue$/, //文件匹配规则，这里举例匹配vue文件
+      //   loader: '',  //使用什么loader处理匹配到的文件,比如vue-loader
+      //   options: {  //配置loader
           
-  //       }
-  //     }
-  //   ]
-  // },
+      //   }
+      // },
+      {
+        test: /\.css$/,
+        //先启用css-loader处理css内容，在交给style-loader处理添加到结构文档中(index.html)
+        loader: ['style-loader','css-loader']
+      }
+    ]
+  },
   devServer: {
     port: 9966, //服务端口
     open: true, //是否自动打开到浏览器
