@@ -30,11 +30,15 @@ module.exports = {
         test: /\.css$/,
         //先启用css-loader处理css内容，在交给style-loader处理添加到结构文档中(index.html)
         loader: ['style-loader','css-loader']
+      },
+      {
+        test: /\.jpg$/,
+        loader: ['file-loader']
       }
     ]
   },
   devServer: {
     port: 9966, //服务端口
-    open: true, //是否自动打开到浏览器
+    open: false, //是否自动打开到浏览器
   }
 }
